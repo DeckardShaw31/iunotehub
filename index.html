@@ -32,6 +32,9 @@
       <select id="type">
         <option value="">Loại</option>
         <option>Note</option>
+        <option>Mindmap</option>
+        <option>Slide</option>
+        <option>Bài tập</option>
       </select>
       <button id="resetFilters" class="btn ghost">Xóa lọc</button>
     </div>
@@ -108,7 +111,7 @@
           <div class="form-row">
             <label>Loại</label>
             <select id="noteType">
-              <option>Note</option>
+              <option>Note</option><option>Mindmap</option><option>Slide</option><option>Bài tập</option>
             </select>
           </div>
         </div>
@@ -132,9 +135,9 @@
     </div>
   </div>
 
-  <!-- Firebase config (Master dán config của dự án vào file này) -->
-  <script type="module" src="firebase-config.js"></script>
   <!-- App logic -->
   <script type="module" src="script.js"></script>
+  <!-- Firebase config (Master dán config của dự án vào file này) -->
+  <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
