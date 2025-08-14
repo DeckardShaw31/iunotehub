@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IU Note Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">📚</div>
+      <h1>IU Note Hub</h1>
+    </div>
+
+    <div class="search-bar glass">
+      <input type="text" id="search" placeholder="🔍 Tìm kiếm theo tiêu đề hoặc môn học..." />
+      <select id="year">
+        <option value="">Năm</option>
+        <option>2025</option>
+        <option>2024</option>
+        <option>2023</option>
+      </select>
+      <select id="semester">
+        <option value="">Kỳ</option>
+        <option>Spring</option>
+        <option>Summer</option>
+        <option>Fall</option>
+      </select>
+      <select id="type">
+        <option value="">Loại</option>
+        <option>Note</option>
+        <option>Mindmap</option>
+        <option>Slide</option>
+        <option>Bài tập</option>
+      </select>
+      <button id="resetFilters" class="btn ghost">Xóa lọc</button>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="darkToggle" title="Chuyển chế độ">🌙</button>
+    </div>
+  </header>
+
+  <!-- Sub-header -->
+  <section class="toolbar">
+    <div class="stats">
+      <span id="countLabel">0 tài liệu</span>
+      <span class="dot"></span>
+      <span id="lastUpdated">—</span>
+    </div>
+    <div class="sort">
+      <label for="sortBy">Sắp xếp:</label>
+      <select id="sortBy">
+        <option value="uploadDate_desc">Mới nhất</option>
+        <option value="uploadDate_asc">Cũ nhất</option>
+        <option value="views_desc">Xem nhiều</option>
+        <option value="title_asc">A → Z</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Main grid -->
+  <main id="notesContainer" class="grid"></main>
+
+  <!-- Empty state -->
+  <template id="emptyTemplate">
+    <div class="empty">
+      <div class="empty-emoji">🗒️</div>
+      <h3>Chưa có tài liệu phù hợp</h3>
+      <p>Hãy thay đổi bộ lọc, tìm kiếm khác, hoặc tải tài liệu mới lên.</p>
+    </div>
+  </template>
+
+  <!-- Floating Upload Button -->
+  <button id="uploadBtn" class="fab" title="Tải tài liệu lên">⬆</button>
+
+  <!-- Upload Modal -->
+  <div id="uploadModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Upload Note</h2>
+        <button id="closeModal" class="icon-btn" aria-label="Đóng">✖</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Tiêu đề</label>
+          <input type="text" id="noteTitle" placeholder="VD: Calculus I - Midterm Notes" />
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Môn học</label>
+            <input type="text" id="noteSubject" placeholder="VD: Calculus" />
+          </div>
+          <div class="form-row">
+            <label>Năm</label>
+            <select id="noteYear">
+              <option>2025</option><option>2024</option><option>2023</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Kỳ</label>
+            <select id="noteSemester">
+              <option>Spring</option><option>Summer</option><option>Fall</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Loại</label>
+            <select id="noteType">
+              <option>Note</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>File (.pdf, .jpg, .jpeg, .png, .docx)</label>
+          <input type="file" id="noteFile" accept=".pdf,.jpg,.jpeg,.png,.docx" />
+          <div id="fileHint" class="hint">Tối đa ~20MB (tùy cấu hình Storage).</div>
+        </div>
+
+        <div id="progressWrap" class="progress-wrap" hidden>
+          <div id="progressBar" class="progress-bar" style="width:0%"></div>
+          <span id="progressText" class="progress-text">0%</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="submitUpload" class="btn">Tải lên</button>
+        <button id="cancelUpload" class="btn ghost">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase config (Master dán config của dự án vào file này) -->
+  <script type="module" src="firebase-config.js"></script>
+  <!-- App logic -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
