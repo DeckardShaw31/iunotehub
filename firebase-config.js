@@ -4,19 +4,22 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.5/firebas
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
 // TODO: Dán cấu hình dự án Firebase của bạn ở đây:
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyB2LSgDxfxID3SRTzl1AsP6euilFPjnuAw",
+    authDomain: "iunotehub.firebaseapp.com",
+    projectId: "iunotehub",
+    storageBucket: "iunotehub.firebasestorage.app",
+    messagingSenderId: "209319401101",
+    appId: "1:209319401101:web:b42d3d156e291a428d34c4",
+    measurementId: "G-6F7P3RBFTZ"
+  };
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 /*
 Gợi ý Security Rules (tối thiểu cho demo, hãy siết chặt khi lên production):
 
